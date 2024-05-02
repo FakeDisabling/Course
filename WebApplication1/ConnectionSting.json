@@ -1,0 +1,3 @@
+﻿{
+  "ConnectionString": "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=KillerOfSteam;Integrated Security=True;",
+}

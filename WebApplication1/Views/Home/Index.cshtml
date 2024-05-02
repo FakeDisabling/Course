@@ -1,0 +1,51 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <form class="mt-1 bg-white">
+        <div class="mt-3 figure-container">
+            @foreach (var game in @ViewBag.topsixList)
+            {
+                <figure class="ms-3">
+                    <form asp-controller="Game" asp-action="Game" method="get">
+                        <input type="hidden" name="gameId" value="@game.GamesId" />
+                        <input type="image" class="image-size" src="@Url.Content(game.ImagePath)" alt="@game.GameName" />
+                    </form>
+                    <a class="text-black text-center a-hidden" asp-controller="Game" asp-action="Game" asp-route-gameId="@game.GamesId">@game.GameName</a>
+                </figure>
+            }
+        </div>
+    </form>
+    <div class="container">
+        <form class="form1 bg-white">
+            <p class="fs-4">Новые игры на сайте</p>
+            <div class="d-flex flex-wrap figure-container">
+                @foreach (var game in @ViewBag.gameDTOs)
+                {
+                    <div class="flex-fill mb-3">
+                        <figure class="ms-2">
+                            <form asp-controller="Game" asp-action="Game" method="get">
+                                <input type="hidden" name="gameId" value="@game.GamesId" />
+                                <input type="image" class="image-size" src="@Url.Content(game.ImagePath)" alt="@game.GameName" />
+                            </form>
+                            <a class="text-black text-center a-hidden" asp-controller="Game" asp-action="Game" asp-route-gameId="@game.GamesId">@game.GameName</a>
+                        </figure>
+                    </div>
+                }
+
+            </div>
+        </form>
+        <form class="form2 bg-white">
+            <div class="mt-3 bg-white fs-4">
+                Категории игр по жанру
+            </div>
+            <div class="button-container">
+                @foreach (var typeGame in @ViewBag.typeGameDTOs)
+                {
+                    <button class="w-94" type="submit" name="mine" value="@typeGame.TypeGameId">@typeGame.Type</button>
+                }
+            </div>
+        </form>
+    </div>
+</div>  

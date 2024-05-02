@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Регистрация</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/WebApplication1.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <form class="mt-5 bg-success">
+        <div class="pt-3 row justify-content-center">
+            <label for="inputLogin" class="col-sm-1 col-form-label">Логин</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" id="inputLogin" />
+            </div>
+        </div>
+        <div class="mt-3 row justify-content-center">
+            <label for="inputPassword" class="col-sm-1 col-form-label">Пароль</label>
+            <div class="col-sm-6">
+                <input type="password" class="form-control" id="inputPassword">
+            </div>
+        </div>
+        <div class="mt-3 row justify-content-center">
+            <label for="exampleFormControlInput1" class="col-sm-1 col-form-label">Почта</label>
+            <div class="col-sm-6">
+                <input type="email" class="form-control" id="exampleFormControlInput" placeholder="name@example.com">
+            </div>
+        </div>
+        <div class="mt-3 row justify-content-center">
+            <label for="inputLogin" class="col-sm-1 col-form-label">Номер телефона</label>
+            <div class="col-sm-6">
+                <input type ="text" class="form-control" id="inputLogin" />
+            </div>
+        </div>
+        <div class="mt-3 row justify-content-center">
+            <label for="inputLogin" class="col-sm-1 col-form-label">Год рождения</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" id="inputLogin" />
+            </div>
+        </div>
+        <div class="pb-3 d-grid gap-2 col-2 mx-auto">
+            @Html.ActionLink("Зарегистрировать", "Register", "Login", null, new { @class = "btn btn-primary btn-lg" })
+        </div>
+    </form>
+</body>

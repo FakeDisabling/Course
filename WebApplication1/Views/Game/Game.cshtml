@@ -1,0 +1,59 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .purplecolor {
+        color: black;
+    }
+</style>
+<div class="parent">
+    <div class="button-container div1">
+        <div class="mt-3 bg-white fs-4">
+            Категории игр по жанру
+        </div>
+        @foreach (var typeGame in @ViewBag.typeGamesDTOs)
+        {
+            <button class="w-94" type="submit" name="mine" value="@typeGame.TypeGameId">@typeGame.Type</button>
+        }
+    </div>
+    <div class="div3">
+        <input type="image" class="image-size" src="@Url.Content(ViewBag.gamesDTO.ImagePath)" />
+    </div>
+    <div class="div2">
+        <div>
+            <label class="fs-4">Год выпуска: </label>
+            <p>@ViewBag.gamesDTO.ReleaseDate</p>
+        </div>
+        <div>
+            <label class="fs-4">Жанр: </label>
+            <p>
+                @ViewBag.gamesTypeList
+            </p>
+        </div>
+        <div>
+            <label class="fs-4">Разработчик: </label>
+            <p>
+                @ViewBag.developersList
+            </p>
+        </div>
+        <div>
+            <label class="fs-4">Стоимость: </label>
+            <p>@ViewBag.gamesDTO.Cost $</p>
+        </div>
+    </div>
+    <div class="div4">
+        <p>Описание</p>
+        @ViewBag.gamesDTO.DescriptionGame
+        <div class="d-grid gap-2 col-2 mx-auto">
+            @Html.ActionLink("Купить", "Shop", "Shop", null, new { @class = "btn purplecolor btn-lg mb-3" })
+        </div>
+        <div>
+            Комментарии
+            @* Сделать комментарии
+            @foreach(var dsa in dasd)
+            {
+                
+            } *@
+        </div>
+    </div>
+</div>
