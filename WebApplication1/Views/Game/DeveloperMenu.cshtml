@@ -1,0 +1,37 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model WebApplication1.Models.GameViewModel
+
+<div>
+    <div class="pt-3 row justify-context-start">
+        <label class="col-sm-1 col-form-label px-0 text-black">Название игры</label>
+        <div class="col-sm-8 px-4">
+            <input type="text" class="form-control form-control-sm" asp-for="GameName" id="ajaxEmail" />
+        </div>
+    </div>
+    <div class="pt-3 row justify-content-start">
+        <label class="col-sm-1 col-form-label px-0 text-black">Стоимость игры</label>
+        <div class="col-sm-auto">
+            <input type="text" class="form-control form-control-sm" asp-for="Cost" id="ajaxBirthday" />
+        </div>
+    </div>
+    <div class="pt-3 row justify-context-start">
+        <label class="col-sm-1 col-form-label px-0 text-black">Описание игры</label>
+        <div class="col-sm-12 px-4">
+            <input type="text" class="form-control form-control-sm" asp-for="DescriptionGame" id="ajaxPhoneNumber" />
+        </div>
+    </div>
+    <div class="pt-3 row justify-context-start">
+        <label class="col-sm-1 col-form-label px-0 text-black">Обложка игры</label>
+        <div class="col-sm-8 px-4">
+            <input type="text" class="form-control form-control-sm" asp-for="ImagePath" id="ajaxAddress" />
+        </div>
+    </div>
+    <div class="pt-3 row justify-context-start">
+        <label class="col-sm-1 col-form-label px-0 text-black">Дата релиза</label>
+        <div class="col-sm-8 px-4">
+            <input type="text" class="form-control form-control-sm" asp-for="ReleaseDate" id="ajaxPassword" />
+        </div>
+    </div>
+</div>

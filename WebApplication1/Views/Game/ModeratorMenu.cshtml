@@ -1,0 +1,45 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Запросы на добавление игр</h1>
+@if (((IEnumerable<object>)ViewBag.approveGame).Count() == 0)
+{
+    <h2>ПУСТО</h2>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Игра</th>
+                <th class="text-right">Цена</th>
+                <th>Описание</th>
+                <th>Год релиза</th>
+                <th>Картинка</th>
+                <th>Типы игры</th>
+                <th>Разработчик</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var line in @ViewBag.approveGame)
+            {
+                <tr>
+                    <td class="text-left">@line.GameName</td>
+                    <td class="text-right">@line.Cost.ToString("# $")</td>
+                    <td>@line.DescriptionGame</td>
+                    <td>@line.ReleaseDate</td>
+                    <td><input type="image" class="image-size" src="@Url.Content(line.ImagePath)" /></td>
+                    <td>@line.GameTypes</td>
+                    <td>@line.Developers</td>
+                    <td>
+                        @Html.ActionLink("Добавить", "AddGameModerator", "Game", new {gameId = @line.GamesId}, new { @class = "btn purplecolor btn-lg mb-3" })
+                    </td>
+                    <td>
+                        @Html.ActionLink("Удалить", "DeleteGame", "Game", new {gameId = @line.GamesId}, new { @class = "btn purplecolor btn-lg mb-3" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

@@ -1,0 +1,70 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model WebApplication1.Models.CardViewModel
+<style>
+    .form-control {
+        width: 150%; 
+    }
+</style>
+<div>
+    <form method="post" asp-action="BuyGames" asp-controller="Financial" class="position-absolute">
+        <div class="pt-3 row justify-context-start">
+            <label class="col-sm-1 col-form-label px-0 text-black">Номер карты</label>
+            <div class="col-sm-12 px-4">
+                <input type="text" class="form-control form-control-sm" asp-for="CardNumber" />
+                <span asp-validation-for="CardNumber" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="pt-3 row justify-content-start">
+            <label class="col-sm-1 col-form-label px-0 text-black">Имя</label>
+            <div class="col-sm-12 px-4">
+                <input type="text" class="form-control form-control-sm" asp-for="FirstName" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="pt-3 row justify-context-start">
+            <label class="col-sm-1 col-form-label px-0 text-black">Фамилия</label>
+            <div class="col-sm-12  px-4">
+                <input type="text" class="form-control form-control-sm" asp-for="LastName" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="pt-3 row justify-context-start">
+            <label class="col-sm-1 col-form-label px-0 text-black">Расчетный адрес</label>
+            <div class="col-sm-12 px-4">
+                <input type="text" class="form-control form-control-sm" asp-for="BillingAddress" />
+                <span asp-validation-for="BillingAddress" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="pt-3 row justify-context-start">
+            <label class="col-sm-1 col-form-label px-0 text-black">Город</label>
+            <div class="col-sm-12 px-4">
+                <input type="text" class="form-control form-control-sm" asp-for="City" />
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="pt-3 row justify-context-start">
+            <label class="col-sm-1 col-form-label px-0 text-black">Почтовый индекс</label>
+            <div class="col-sm-12 px-4">
+                <input type="text" class="form-control form-control-sm" asp-for="PostalCode" />
+                <span asp-validation-for="PostalCode" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="pt-3 row justify-context-start">
+            <label class="col-sm-1 col-form-label px-0 text-black">Страна</label>
+            <div class="col-sm-12 px-4">
+                <input type="text" class="form-control form-control-sm" asp-for="Country" />
+                <span asp-validation-for="Country" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="pt-3 row justify-context-start">
+            <label class="col-sm-1 col-form-label px-0 text-black">Телефон</label>
+            <div class="col-sm-12 px-4">
+                <input type="text" class="form-control form-control-sm" asp-for="Phone" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+        </div>
+        <button type="submit" class="btn purplecolor btn-lg mb-3">Купить</button>
+    </form>
+</div>

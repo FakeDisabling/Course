@@ -27,6 +27,7 @@ namespace DAL
             services.AddTransient<ITypeGame, TypeGameRepositories>();
             services.AddTransient<IUser, UserRepositories>();
             services.AddTransient<IGamesTypeGames, GameTypeGamesRepository>();
+            services.AddTransient<ICart, CartRepositories>();
         }
     }
 }

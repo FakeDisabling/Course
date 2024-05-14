@@ -1,0 +1,61 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .parent {
+        display: grid;
+        grid-template-columns: 2.5fr 1fr;
+        grid-template-rows: 1fr;
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+        }
+
+    .div1 { grid-area: 1 / 1 / 2 / 2; }
+    .div2 { grid-area: 1 / 2 / 2 / 3; }
+</style>
+
+<div class="parent">
+    <div class="div1">
+        <h2>ПОПОЛНИТЬ БАЛАНС КОШЕЛЬКА</h2>
+        <p>Средства в вашем кошельке KillerOfSteam можно тратить на покупку любых игр </p>
+        <div>
+            <label>
+                Добавить $5.00 USD
+            </label>
+            @Html.ActionLink("Пополнить баланс", "Replenishment", "Financial", new { cost = 5.0 }, new { @class = "btn purplecolor btn-lg mb-3" })
+        </div>
+        <div>
+            <label>
+                Добавить $10.00 USD
+            </label>
+            @Html.ActionLink("Пополнить баланс", "Replenishment", "Financial", new { cost = 10.0 }, new { @class = "btn purplecolor btn-lg mb-3" })
+        </div>
+        <div>
+            <label>
+                Добавить $25.00 USD
+            </label>
+            @Html.ActionLink("Пополнить баланс", "Replenishment", "Financial", new { cost = 25.0 }, new { @class = "btn purplecolor btn-lg mb-3" })
+        </div>
+
+        <div>
+            <label>
+                Добавить $50.00 USD
+            </label>
+            @Html.ActionLink("Пополнить баланс", "Replenishment", "Financial", new { cost = 50.0 }, new { @class = "btn purplecolor btn-lg mb-3" })
+        </div>
+        <div>
+            <label>
+                Добавить $100.00 USD
+            </label>
+            @Html.ActionLink("Пополнить баланс", "Replenishment", "Financial", new { cost = 100.0 }, new { @class = "btn purplecolor btn-lg mb-3" })
+        </div>
+    </div>
+    <div class="div2">
+        <h1>Ваш аккаунт KilleOfSteam</h1>
+        <label>Остаток средств: @ViewBag.Client.ElectronicWallet.ToString("# $")</label>
+    </div>
+    
+
+</div>
+    

@@ -76,7 +76,8 @@ namespace DAL.Migrations
                     Cost = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     DescriptionGame = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ImagePath = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ReleaseDate = table.Column<int>(type: "int", nullable: false)
+                    ReleaseDate = table.Column<int>(type: "int", nullable: false),
+                    IsModerate = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -325,6 +326,32 @@ namespace DAL.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "carts",
+                columns: table => new
+                {
+                    CartId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    GameId = table.Column<int>(type: "int", nullable: false),
+                    ClientId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_carts", x => x.CartId);
+                    table.ForeignKey(
+                        name: "FK_carts_clients_ClientId",
+                        column: x => x.ClientId,
+                        principalTable: "clients",
+                        principalColumn: "ClientId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_carts_games_GameId",
+                        column: x => x.GameId,
+                        principalTable: "games",
+                        principalColumn: "GamesId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "stores",
                 columns: table => new
                 {
@@ -426,6 +453,16 @@ namespace DAL.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_carts_ClientId",
+                table: "carts",
+                column: "ClientId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_carts_GameId",
+                table: "carts",
+                column: "GameId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_clients_UserId",
                 table: "clients",
                 column: "UserId");
@@ -496,6 +533,9 @@ namespace DAL.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "carts");
 
             migrationBuilder.DropTable(
                 name: "comments");

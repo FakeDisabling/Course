@@ -10,7 +10,7 @@ namespace BLL.DTO
     {
         public int ClientId { get; set; }
 
-        public int UserId { get; set; }
+        public string UserId { get; set; }
         public UserDTO User { get; set; }
         public int ElectronicWallet { get; set; }
     }

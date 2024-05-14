@@ -1,0 +1,48 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Ваша корзина</h1>
+@if (((IEnumerable<object>)ViewBag.Cart).Count() == 0)
+{
+    <h2>ПУСТО</h2>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Игра</th>
+                <th class="text-right">Цена</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var line in @ViewBag.Cart)
+            {
+                <tr>
+                    <td class="text-left">@line.GameName</td>
+                    <td class="text-right">@line.Cost.ToString("# $")</td>
+                    <td>
+                        @Html.ActionLink("Удалить", "RemoveFromCart", "Cart", new { gameid = line.GameId }, new { @class = "btn purplecolor btn-lg mb-3" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2" class="text-right">Итого:</td>
+                <td class="text-right">
+                    @ViewBag.total
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+}
+<div class="text-center">
+    @Html.ActionLink("Вернутся к покупкам", "Index", "Home", null, new { @class = "btn purplecolor btn-lg mb-3" })
+    @if (((IEnumerable<object>)ViewBag.Cart).Count() != 0)
+    {
+        @Html.ActionLink("Купить", "Payment", "Financial", null, new { @class = "btn purplecolor btn-lg mb-3" })
+    }
+</div>

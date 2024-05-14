@@ -15,5 +15,6 @@ namespace BLL.DTO
         public virtual ICollection<StoreDTO> Stores { get; set; } = new List<StoreDTO>();
         public string ImagePath { get; set; }
         public int ReleaseDate { get; set; }
+        public bool IsModerate { get; set; }
     }
 }

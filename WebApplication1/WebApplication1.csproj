@@ -7,7 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="jQuery" Version="3.7.1" />
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.1.39" />
+    <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.1.1" />
+    <PackageReference Include="Microsoft.jQuery.Unobtrusive.Ajax" Version="3.2.6" />
+    <PackageReference Include="Microsoft.Web.Administration" Version="11.1.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 

@@ -2,6 +2,29 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <style>
+    .parent {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: 1fr 2.5fr;
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+    }
+
+    .div1 {
+        grid-area: 1 / 4 / 3 / 5;
+    }
+
+    .div2 {
+        grid-area: 1 / 2 / 3 / 4;
+    }
+
+    .div3 {
+        grid-area: 1 / 1 / 2 / 2;
+    }
+
+    .div4 {
+        grid-area: 2 / 1 / 3 / 4;
+    }
     .purplecolor {
         color: black;
     }
@@ -44,9 +67,14 @@
     <div class="div4">
         <p>Описание</p>
         @ViewBag.gamesDTO.DescriptionGame
-        <div class="d-grid gap-2 col-2 mx-auto">
-            @Html.ActionLink("Купить", "Shop", "Shop", null, new { @class = "btn purplecolor btn-lg mb-3" })
-        </div>
+        @{
+            if (User.IsInRole("Client"))
+            {
+                <div class="d-grid gap-2 col-2 mx-auto">
+                    @Html.ActionLink("Добавить в корзину", "AddToCart", "Cart", new { gameid = ViewBag.gamesDTO.GamesId }, new { @class = "btn purplecolor btn-lg mb-3" })
+                </div>
+            }
+        }
         <div>
             Комментарии
             @* Сделать комментарии

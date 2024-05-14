@@ -52,7 +52,7 @@ namespace BLL.Services
         
         public List<GamesDTO> TopSixGame()
         {
-            List<GamesDTO> gamesDTOs = GetAll();
+            List<GamesDTO> gamesDTOs = GetAll().Where(x => x.IsModerate == true).ToList();
             return gamesDTOs.Take(6).ToList();
         }
     }

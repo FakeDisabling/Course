@@ -8,7 +8,7 @@ namespace BLL.DTO
 {
     public class DevelopersGamesDTO
     {
-        public int Id { get; set; }
+        public int DevelopersGamesId { get; set; }
         public DevelopersDTO Developers { get; set; }
         public GamesDTO Games { get; set; }
         public int DevelopersId { get; set; }

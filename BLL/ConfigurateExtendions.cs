@@ -32,7 +32,8 @@ namespace BLL
                 typeof(StoreProfile),
                 typeof(TypeGameProfile),
                 typeof(UserProfile),
-                typeof(GamesTypeGamesProfile)
+                typeof(GamesTypeGamesProfile),
+                typeof(CartProfile)
             );
 
             services.AddTransient<IClientService, ClientService>();
@@ -47,6 +48,7 @@ namespace BLL
             services.AddTransient<ITypeGameService, TypeGameService>();
             services.AddTransient<IUserService, UserService>();
 			services.AddTransient<IGamesTypesGamesService, GamesTypeGamesService>();
+            services.AddTransient<ICartService, CartService>();
 		}
     }
 }

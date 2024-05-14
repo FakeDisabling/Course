@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace BLL.DTO
+namespace WebApplication1.Models
 {
-    public class UserDTO : IdentityUser
+    public class EditModel
     {
         [Required]
         [DataType(DataType.EmailAddress)]
@@ -25,6 +19,16 @@ namespace BLL.DTO
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
-        public virtual ICollection<AchievementUserDTO> Achievement { get; set; } = new List<AchievementUserDTO>();
+
+        [Required]
+        [DataType(DataType.Password)]
+        public string NewPassword { get; set; }
+
+        [Required]
+        [DataType(DataType.Password)]
+        public string NewPasswordConfirm { get; set; }
+
+        [Required]
+        public string Address { get; set; }
     }
 }

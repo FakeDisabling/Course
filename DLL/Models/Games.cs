@@ -15,6 +15,7 @@ namespace DAL.Models
 		public string DescriptionGame { get; set; }
 		public string ImagePath { get; set; }
 		public int ReleaseDate { get; set; }
+		public bool IsModerate { get; set; }
 		public Games() {
 
 		}

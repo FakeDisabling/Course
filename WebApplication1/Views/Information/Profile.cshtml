@@ -1,0 +1,122 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model WebApplication1.Models.EditModel
+<style>
+    .parent {
+        display: grid;
+        grid-template-columns: 4fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+    }
+
+    .div1 {
+        grid-area: 1 / 1 / 2 / 2;
+    }
+
+    .div2 {
+        grid-area: 1 / 2 / 2 / 3;
+    }
+        .purplecolor {
+            color: black;
+        }
+</style>
+<div class="parent">
+    <div class="button-container div2">
+        <div class="mt-3 bg-white fs-4">
+            Категории игр по жанру
+        </div>
+        @foreach (var typeGame in @ViewBag.typeGamesDTOs)
+        {
+            <button class="w-94" type="submit" name="mine" value="@typeGame.TypeGameId">@typeGame.Type</button>
+        }
+    </div>
+    <div class="div1">
+        <h1>Профиль пользователя</h1>
+        <p>Имя: @ViewBag.User.UserName</p>
+        <p id="userEmail">Почта: @ViewBag.User.Email</p>
+        <p id="userBirthday">Дата рождения: @ViewBag.User.Birthday</p>
+        <p id="userPhoneNumber">Номер телефона: @ViewBag.User.PhoneNumber</p>
+        <p id="userAddress">Адрес: @ViewBag.User.Address</p>
+        <p>Кол-во комментариев: </p>
+        <p>Кол-во публикаций: </p>
+
+        <div class="pt-3 row justify-context-start">
+            <label class="col-sm-1 col-form-label px-0 text-black">Почта</label>
+            <div class="col-sm-4 px-4">
+                <input type="text" class="form-control form-control-sm" asp-for="Email" id="ajaxEmail" />
+            </div>
+        </div>
+        <div class="pt-3 row justify-content-start">
+            <label class="col-sm-1 col-form-label px-0 text-black">Дата рождения</label>
+            <div class="col-sm-4 px-4">
+                <input type="text" class="form-control form-control-sm" asp-for="Birthday" id="ajaxBirthday" />
+            </div>
+        </div>
+        <div class="pt-3 row justify-context-start">
+            <label class="col-sm-1 col-form-label px-0 text-black">Номер телефона</label>
+            <div class="col-sm-4 px-4">
+                <input type="text" class="form-control form-control-sm" asp-for="PhoneNumber" id="ajaxPhoneNumber" />
+            </div>
+        </div>
+        <div class="pt-3 row justify-context-start">
+            <label class="col-sm-1 col-form-label px-0 text-black">Адрес</label>
+            <div class="col-sm-4 px-4">
+                <input type="text" class="form-control form-control-sm" asp-for="Address" id="ajaxAddress" />
+            </div>
+        </div>
+        <div class="pt-3 row justify-context-start">
+            <label class="col-sm-1 col-form-label px-0 text-black">Старый пароль</label>
+            <div class="col-sm-4 px-4">
+                <input type="text" class="form-control form-control-sm" asp-for="Password" id="ajaxPassword" />
+            </div>
+        </div>
+        <div class="pt-3 row justify-context-start">
+            <label class="col-sm-1 col-form-label px-0 text-black">Новый пароль</label>
+            <div class="col-sm-4 px-4">
+                <input type="text" class="form-control form-control-sm" asp-for="NewPassword" id="ajaxNewPassword" />
+            </div>
+        </div>
+        <div class="pt-3 row justify-context-start">
+            <label class="col-sm-1 col-form-label px-0 text-black">Повторите новый пароль</label>
+            <div class="col-sm-4 px-4">
+                <input type="text" class="form-control form-control-sm" asp-for="NewPasswordConfirm" id="ajaxNewPasswordConfirm" />
+            </div>
+        </div>
+        <div class="d-grid gap-2 col-2 mx-auto">
+            <button class="w-94" id="ajaxButton">Сохранить изменения</button>
+        </div>
+
+    </div>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#ajaxButton').click(function () {
+            var testData =
+            {
+                'Email': $("#ajaxEmail").val(),
+                'Birthday': $("#ajaxBirthday").val(),
+                'PhoneNumber': $("#ajaxPhoneNumber").val(),
+                'Address': $("#ajaxAddress").val(),
+                'Password': $("#ajaxPassword").val(),
+                'NewPassword': $("#ajaxNewPassword").val(),
+                'NewPasswordConfirm': $("#ajaxNewPasswordConfirm").val()
+            };
+            $.ajax({
+                type: "POST",
+                url: "/Profile/Edit",
+                data: testData,
+                success: function (data) {
+                    $("#userEmail").val(data.data.Email);
+                    $("#userBirthday").val(data.data.Birthday);
+                    $("#userPhoneNumber").val(data.data.PhoneNumber);
+                    $("#userAddress").val(data.data.Address);   
+                }
+                }
+            });
+        });
+    });
+</script>

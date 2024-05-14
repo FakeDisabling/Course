@@ -64,8 +64,8 @@ namespace WebApplication1
             }
             if (await userManager.FindByEmailAsync(email1) == null)
             {
-                User moderator = new User
-                {
+				User moderator = new User
+				{
                     Email = email1,
                     Password = password1,
                     UserName = name1,
@@ -82,8 +82,8 @@ namespace WebApplication1
             }
             if (await userManager.FindByEmailAsync(email2) == null)
             {
-                User developer = new User
-                {
+				User developer = new User
+				{
                     Email = email2,
                     Password = password2,
                     UserName = name2,

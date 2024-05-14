@@ -24,14 +24,14 @@ namespace WebApplication1.Controllers
 		public IActionResult Index()
 		{
             List<TypeGameDTO> typeGameDTOs = typeGame.GetAll();
-			List<GamesDTO> gamesDTOs = games.GetAll();
+			List<GamesDTO> gamesDTOs = games.GetAll().Where(x => x.IsModerate == true).ToList();
 			List<GamesDTO> topsixList = games.TopSixGame();
 
 			ViewBag.typeGameDTOs = typeGameDTOs;
 			ViewBag.gameDTOs = gamesDTOs;
 			ViewBag.topsixList = topsixList;
-            return View();
-		}
+            return View("~/Views/Home/Index.cshtml");
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
 		public IActionResult Error()

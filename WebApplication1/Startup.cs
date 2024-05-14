@@ -42,6 +42,7 @@ namespace WebApplication1
             services.AddScoped<IStore, StoreRepositories>();
             services.AddScoped<ITypeGame, TypeGameRepositories>();
             services.AddScoped<IGamesTypeGames, GameTypeGamesRepository>();
+            services.AddScoped<ICart, CartRepositories>();
 
             services.AddScoped<IClientService, ClientService>();
             services.AddScoped<IAchievementService, AchievementService>();
@@ -53,8 +54,11 @@ namespace WebApplication1
             services.AddScoped<IStoreService, StoreService>();
             services.AddScoped<ITypeGameService, TypeGameService>();
 			services.AddScoped<IGamesTypesGamesService, GamesTypeGamesService>();
+            services.AddScoped<ICartService, CartService>();
 
 			services.AddControllersWithViews();
+            services.AddSession();
+            services.AddMemoryCache();
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
@@ -74,6 +78,7 @@ namespace WebApplication1
             app.UseCors("AllowSpecificOrigin");
             app.UseAuthorization();
             app.UseAuthentication();
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
@@ -84,7 +89,7 @@ namespace WebApplication1
 
             using (var scope = app.ApplicationServices.CreateScope())
             {
-                var services = scope.ServiceProvider;
+                var services = scope.ServiceProvider;   
                 try
                 {
                     var context = services.GetRequiredService<ApplicationContext>();

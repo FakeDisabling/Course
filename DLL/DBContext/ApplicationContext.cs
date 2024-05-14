@@ -31,6 +31,7 @@ namespace DAL.DBContext
 		public DbSet<AchievementUser> achievementUsers { get; set; }
 		public DbSet<DevelopersGames> developersGames { get; set; }
 		public DbSet<GamesTypeGames> gamesTypeGames { get; set; }
+		public DbSet<Cart> carts { get; set; }
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
 			optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=KillerOfSteam;Trusted_Connection=True;");

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DAL.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20240429195157_KillerOfSteam")]
+    [Migration("20240513234222_KillerOfSteam")]
     partial class KillerOfSteam
     {
         /// <inheritdoc />
@@ -64,6 +64,29 @@ namespace DAL.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("achievementUsers");
+                });
+
+            modelBuilder.Entity("DAL.Models.Cart", b =>
+                {
+                    b.Property<int>("CartId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CartId"));
+
+                    b.Property<int>("ClientId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("GameId")
+                        .HasColumnType("int");
+
+                    b.HasKey("CartId");
+
+                    b.HasIndex("ClientId");
+
+                    b.HasIndex("GameId");
+
+                    b.ToTable("carts");
                 });
 
             modelBuilder.Entity("DAL.Models.Client", b =>
@@ -194,6 +217,9 @@ namespace DAL.Migrations
                     b.Property<string>("ImagePath")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsModerate")
+                        .HasColumnType("bit");
 
                     b.Property<int>("ReleaseDate")
                         .HasColumnType("int");
@@ -494,6 +520,25 @@ namespace DAL.Migrations
                     b.Navigation("Achievement");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("DAL.Models.Cart", b =>
+                {
+                    b.HasOne("DAL.Models.Client", "Client")
+                        .WithMany()
+                        .HasForeignKey("ClientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DAL.Models.Games", "Game")
+                        .WithMany()
+                        .HasForeignKey("GameId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Client");
+
+                    b.Navigation("Game");
                 });
 
             modelBuilder.Entity("DAL.Models.Client", b =>
